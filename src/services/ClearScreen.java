@@ -1,4 +1,4 @@
-package view.user;
+package services;
 
 public class ClearScreen {
     public static void clearScreen() {

@@ -7,7 +7,7 @@ import model.Product;
 import services.CartDetailService;
 import services.CartService;
 import services.ProductService;
-import view.user.ClearScreen;
+import services.ClearScreen;
 
 import java.util.ArrayList;
 
@@ -18,9 +18,10 @@ public class ShopView {
     static ArrayList<Product> productList = new ArrayList<>();
 
     public static void viewShop(long idUser) {
-        ClearScreen.clearScreen();
+
         Cart myCart = cartService.newCart(idUser);
         do {
+            ClearScreen.clearScreen();
             showProduct();
             System.out.println("Chọn STT sản phẩm bạn muốn mua: ");
             System.out.print("Enter number: ");

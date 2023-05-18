@@ -2,6 +2,7 @@ package view.user;
 
 import input.InputData;
 import model.Order;
+import services.ClearScreen;
 import services.OrderService;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class OrderView {
     public static void viewDetail() {
         System.out.print("Nhập STT Đơn hàng cần xem: ");
         int index = InputData.getIndex(orderList);
+        ClearScreen.clearScreen();
         OrderDetailView.orderDetail(index);
     }
 

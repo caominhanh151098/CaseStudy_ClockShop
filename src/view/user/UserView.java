@@ -1,8 +1,10 @@
 package view.user;
 
+import input.Continue;
 import input.EditData;
 import input.InputData;
 import model.Account;
+import services.ClearScreen;
 import services.UserService;
 
 import java.util.ArrayList;
@@ -16,14 +18,13 @@ public class UserView {
 
     public static void user(Account account) {
         if (account.getRote() == 0) {
-            adminView();
+            adminView(account);
         } else staffView(account);
     }
 
-    public static void adminView() {
+    public static void adminView(Account account) {
         int choice;
         do {
-            userService.getUserList();
             ClearScreen.clearScreen();
             showUser();
             System.out.printf("%n⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
@@ -51,7 +52,7 @@ public class UserView {
                     break;
                 case 3:
                     ClearScreen.clearScreen(3);
-                    deleteUser();
+                    deleteUser(account);
                     break;
                 case 0:
                     ClearScreen.clearScreen();
@@ -84,20 +85,53 @@ public class UserView {
                     editInfo(account);
                     break;
                 case 0:
+                    ClearScreen.clearScreen();
                     break;
                 default:
+                    ClearScreen.clearScreen();
                     System.out.println("Error! Không nằm trong mục lục. Yêu cầu chọn lại:");
             }
         } while (choice != 0);
     }
 
     public static void editInfo(Account account) {
-        String password = EditData.getPassword(account.getPassword());
-        String name = EditData.getName(account.getName());
-        Date dob = EditData.getDate(account.getDob());
-        String address = EditData.getAddress(account.getAddress());
-        String email = EditData.getEmail(account.getEmail());
-        String phoneNum = EditData.getPhoneNum(account.getNumPhone());
+        String password;
+        String name;
+        Date dob;
+        String address;
+        String email;
+        String phoneNum;
+
+        do {
+            password = EditData.getPassword(account.getPassword());
+            if (Continue.continueInput(password))
+                return;
+        } while (password.equals("0"));
+        do {
+            name = EditData.getName(account.getName());
+            if (Continue.continueInput(name))
+                return;
+        } while (name.equals("0"));
+        do {
+            dob = EditData.getDate(account.getDob());
+            if (Continue.continueInput(dob))
+                return;
+        } while (dob.equals(new Date(0)));
+        do {
+            address = EditData.getAddress(account.getAddress());
+            if (Continue.continueInput(address))
+                return;
+        } while (address.equals("0"));
+        do {
+            email = EditData.getEmail(account.getEmail());
+            if (Continue.continueInput(email))
+                return;
+        } while (email.equals("0"));
+        do {
+            phoneNum = EditData.getPhoneNum(account.getNumPhone());
+            if (Continue.continueInput(phoneNum))
+                return;
+        } while (phoneNum.equals("0"));
 
         Account accountInfo = new Account()
                 .setId(account.getId())
@@ -131,14 +165,45 @@ public class UserView {
     }
 
     public static void addUser() {
-        String username = InputData.getUsername();
-        String password = InputData.getPassword();
-        String name = InputData.getName();
+        String username;
+        String password;
+        String name;
+        Date dob;
+        String address;
+        String email;
+        String phoneNum;
+        do {
+            username = InputData.getUsername();
+            if (Continue.continueInput(username))
+                return;
+        } while (username.equals("0"));
+        do {
+            password = InputData.getPassword();
+            if (Continue.continueInput(password))
+                return;
+        } while (password.equals("0"));
+        do {
+            name = InputData.getName();
+            if (Continue.continueInput(name))
+                return;
+        } while (name.equals("0"));
         int role = InputData.getRole();
-        Date dob = InputData.getDate();
-        String address = InputData.getAddress();
-        String email = InputData.getEmail();
-        String phoneNum = InputData.getPhoneNum();
+        do {
+            dob = InputData.getDate();
+            if (Continue.continueInput(dob))
+                return;
+        } while (dob.equals(new Date(0)));
+        do {
+            address = InputData.getAddress();
+            if (Continue.continueInput(address))
+                return;
+        } while (address.equals("0"));
+        do {
+            email = InputData.getEmail();
+            if (Continue.continueInput(email))
+                return;
+        } while (email.equals("0"));
+        phoneNum = InputData.getPhoneNum();
         Account accountInfo = new Account()
                 .setUsername(username)
                 .setPassword(password)
@@ -160,17 +225,48 @@ public class UserView {
         accountList = userService.getUserList();
         System.out.print("Nhập STT Tài khoản cần sửa: ");
         int index = InputData.getIndex(accountList);
-        Account myAccount = accountList.get(index);
-        String password = EditData.getPassword(myAccount.getPassword());
-        String name = EditData.getName(myAccount.getName());
-        int role = EditData.getRole(myAccount.getRote());
-        Date dob = EditData.getDate(myAccount.getDob());
-        String address = EditData.getAddress(myAccount.getAddress());
-        String email = EditData.getEmail(myAccount.getEmail());
-        String phoneNum = EditData.getPhoneNum(myAccount.getNumPhone());
+        Account account = accountList.get(index);
+        String password;
+        String name;
+        Date dob;
+        String address;
+        String email;
+        String phoneNum;
 
-        String username = myAccount.getUsername();
-        Long id = myAccount.getId();
+        do {
+            password = EditData.getPassword(account.getPassword());
+            if (Continue.continueInput(password))
+                return;
+        } while (password.equals("0"));
+        do {
+            name = EditData.getName(account.getName());
+            if (Continue.continueInput(name))
+                return;
+        } while (name.equals("0"));
+        int role = EditData.getRole(account.getRote());
+        do {
+            dob = EditData.getDate(account.getDob());
+            if (Continue.continueInput(dob))
+                return;
+        } while (dob.equals(new Date(0)));
+        do {
+            address = EditData.getAddress(account.getAddress());
+            if (Continue.continueInput(address))
+                return;
+        } while (address.equals("0"));
+        do {
+            email = EditData.getEmail(account.getEmail());
+            if (Continue.continueInput(email))
+                return;
+        } while (email.equals("0"));
+        do {
+            phoneNum = EditData.getPhoneNum(account.getNumPhone());
+            if (Continue.continueInput(phoneNum))
+                return;
+        } while (phoneNum.equals("0"));
+
+        String username = account.getUsername();
+        Long id = account.getId();
         Account accountInfo = new Account()
                 .setId(id)
                 .setUsername(username)
@@ -189,27 +285,20 @@ public class UserView {
         }
     }
 
-    public static void deleteUser() {
+    public static void deleteUser(Account account) {
         accountList = userService.getUserList();
         System.out.print("Nhập STT Tài khoản muốn xóa: ");
         int index = InputData.getIndex(accountList);
 
-        String username = accountList.get(index).getUsername();
-        System.out.printf("Bạn muốn xóa Username: %s? (y/n)%n", username);
-        if (InputData.choice()) {
-            userService.deleteUser(index);
-        }
-    }
-
-    public static void clearScreen() {
-        for (int i = 0; i < 25; i++) {
-            System.out.println();
-        }
-    }
-
-    public static void clearScreen(int line) {
-        for (int i = 0; i < line; i++) {
-            System.out.println();
+        Account deleteUser = accountList.get(index);
+        if (account.equals(deleteUser))
+            System.out.println("Bạn không thể xóa tài khoản này!");
+        else {
+            String username = deleteUser.getUsername();
+            System.out.printf("Bạn muốn xóa Username: %s? (y/n)%n", username);
+            if (InputData.choice()) {
+                userService.deleteUser(index);
+            }
         }
     }
 }

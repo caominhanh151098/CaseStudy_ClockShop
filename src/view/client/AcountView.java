@@ -4,7 +4,7 @@ import input.EditData;
 import input.InputData;
 import model.Account;
 import services.UserService;
-import view.user.ClearScreen;
+import services.ClearScreen;
 
 import java.util.Date;
 import java.util.Scanner;

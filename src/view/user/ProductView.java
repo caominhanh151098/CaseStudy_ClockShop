@@ -1,7 +1,9 @@
 package view.user;
 
+import input.EditData;
 import input.InputData;
 import model.Product;
+import services.ClearScreen;
 import services.ProductService;
 
 import java.util.ArrayList;
@@ -16,7 +18,6 @@ public class ProductView {
             Scanner scanner = new Scanner(System.in);
             int choice;
             do {
-                productService.getProductList();
                 ClearScreen.clearScreen();
                 showProduct();
                 System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
@@ -53,10 +54,13 @@ public class ProductView {
                         System.out.println("Lỗi! Không nằm trong mục lục. Yêu cầu chọn lại:");
                 }
             } while (choice != 0);
-        } else System.out.println("Bạn bị giới hạn chức năng này!");
+        } else {
+            ClearScreen.clearScreen();
+            System.out.println("Bạn bị giới hạn chức năng này!");
+        }
     }
 
-        public static void showProduct() {
+    public static void showProduct() {
         productsList = productService.getProductList();
         System.out.println("╔═══════╦══════════════════════════════════════════════════════════════╦══════════════════════╦════════════╦══════════════════════╗");
         System.out.printf("║%-7s║ %-60s ║ %-20s ║ %-10s ║ %-20s ║%n", "  STT", "                      Product name", "       Brand", " Quantity", "    Price");
@@ -92,13 +96,13 @@ public class ProductView {
         productsList = productService.productList;
         System.out.print("Nhập STT Sản phẩm cần sửa: ");
         int index = InputData.getIndex(productsList);
-        long idProduct = productsList.get(index).getIdProduct();
-        String productName = InputData.getName();
-        String brand = InputData.getBrand();
-        int quantity = InputData.getQuantity();
-        int price = InputData.getPrice();
+        Product product = productsList.get(index);
+        String productName = EditData.getName(product.getProductName());
+        String brand = EditData.getBrand(product.getBrand());
+        int quantity = EditData.getQuantity(product.getQuantity());
+        int price = EditData.getPrice(product.getPrice());
         Product productInfo = new Product()
-                .setIdProduct(idProduct)
+                .setIdProduct(product.getIdProduct())
                 .setProductName(productName)
                 .setBrand(brand)
                 .setQuantity(quantity)

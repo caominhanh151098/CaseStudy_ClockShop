@@ -2,6 +2,7 @@ package view.user;
 
 import model.Order;
 import model.OrderDetail;
+import services.ClearScreen;
 import services.OrderDetailService;
 import services.OrderService;
 
@@ -32,7 +33,6 @@ public class OrderDetailView {
             }
             switch (choice) {
                 case 0:
-                    ClearScreen.clearScreen();
                     break;
                 default:
                     ClearScreen.clearScreen();

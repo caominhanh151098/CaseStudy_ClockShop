@@ -1,7 +1,7 @@
 package view.client;
 
 import model.Account;
-import view.user.ClearScreen;
+import services.ClearScreen;
 
 import java.util.Scanner;
 
@@ -10,8 +10,8 @@ public class MainMenuClient {
 
     public static void mainMenuClient(Account account) {
         int choice;
-        ClearScreen.clearScreen();
         do {
+            ClearScreen.clearScreen();
             System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
             System.out.printf("⚃\t\t%-40s⚃%n", "--Trang chủ web BÁN ĐỒNG HỒ--");
             System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
@@ -41,7 +41,6 @@ public class MainMenuClient {
                     OrderClientView.orderView(account);
                     break;
                 case 0:
-                    ClearScreen.clearScreen();
                     break;
                 default:
                     System.out.println("Error! Không nằm trong mục lục. Yêu cầu chọn lại:");

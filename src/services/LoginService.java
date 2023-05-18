@@ -15,10 +15,12 @@ public class LoginService {
         accountList = userService.getUserList();
         for (Account account : accountList) {
             if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
-                System.out.println("Welcome to VN!");
                 if (account.getRote() == 0 || account.getRote() == 1) {
+                    ClearScreen.clearScreen();
+                    System.out.printf("Welcome back [%s]!%n%n", account.getName());
                     MainMenuUser.mainMenuAdmin(account);
                 } else
+                    ClearScreen.clearScreen();
                     MainMenuClient.mainMenuClient(account);
                 return true;
             }

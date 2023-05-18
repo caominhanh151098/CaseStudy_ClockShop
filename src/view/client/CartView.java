@@ -4,7 +4,7 @@ import input.InputData;
 import model.Cart;
 import model.CartDetail;
 import services.CartService;
-import view.user.ClearScreen;
+import services.ClearScreen;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +18,9 @@ public class CartView {
 
     public static void cartView(long idUser) {
         int choice;
+
         do {
+            ClearScreen.clearScreen();
             myCart = cartService.getCartListByID(idUser);
             myCartDetail = myCart.getDetailList();
             if (myCart.getDetailList().isEmpty()) {

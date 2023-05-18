@@ -77,7 +77,7 @@ public class UserService{
 
     public void deleteUser(int index) {
         getUserList();
-        accountList.remove(index - 1);
+        accountList.remove(index);
         WriteFile.editData(accountList, path);
     }
 
@@ -89,5 +89,23 @@ public class UserService{
             }
         }
         return null;
+    }
+    public boolean contain(String username) {
+        getUserList();
+        for (Account account : accountList) {
+            if (account.getUsername() == username) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean containEmail(String email) {
+        getUserList();
+        for (Account account : accountList) {
+            if (account.getEmail() == email) {
+                return true;
+            }
+        }
+        return false;
     }
 }

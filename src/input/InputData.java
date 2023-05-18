@@ -19,6 +19,21 @@ public class InputData {
     static UserService userService = new UserService();
     static ArrayList<Account> accountList;
 
+    public static String loginUsername() {
+        String username;
+        do {
+            System.out.print("Nhập Username(*): ");
+            username = scanner.nextLine();
+            if (username.equals("")) {
+                System.out.println("Error! Username không được rỗng!");
+                continue;
+            }
+            if (!Validate.checkAccount(username))
+                System.out.println("Error! Username không phù hợp! (Ít nhất có 6 ký tự gồm chữ thường và số)");
+        } while (username.equals("") || !Validate.checkAccount(username));
+        return username;
+    }
+
     public static String getUsername() {
         String username;
         do {
@@ -28,10 +43,15 @@ public class InputData {
                 System.out.println("Error! Username không được rỗng!");
                 continue;
             }
-            if (Validate.checkAccount(username) == false) {
-                System.out.println("Error! Username không phù hợp!");
+            if (username.equals("0"))
+                return username;
+            if (!Validate.checkAccount(username)) {
+                System.out.println("Error! Username không phù hợp! (Ít nhất có 6 ký tự gồm chữ thường và số, bắt đầu bằng chữ thường)");
+                continue;
             }
-        } while (username.equals("") || Validate.checkAccount(username) == false);
+            if (userService.contain(username))
+                System.out.println("Username đã tồn tại! Xin nhập lại!");
+        } while (username.equals("") || !Validate.checkAccount(username));
         return username;
     }
 
@@ -44,10 +64,12 @@ public class InputData {
                 System.out.println("Error! Password không được rỗng!");
                 continue;
             }
-            if (Validate.checkPassword(password) == false) {
-                System.out.println("Error! Password không phù hợp!");
+            if (password.equals("0"))
+                return password;
+            if (!Validate.checkPassword(password)) {
+                System.out.println("Error! Password không phù hợp! (Ít nhất có 6 ký tự gồm chữ và số)");
             }
-        } while (password.equals("") || Validate.checkPassword(password) == false);
+        } while (password.equals("") || !Validate.checkPassword(password));
         return password;
     }
 
@@ -56,17 +78,19 @@ public class InputData {
         do {
             System.out.print("Nhập Name(*): ");
             name = scanner.nextLine();
-            if (name.length() > 100) {
-                System.out.println("Error! Name quá dài!");
-                continue;
-            }
             if (name.equals("")) {
                 System.out.println("Error! Name không được rỗng!");
                 continue;
             }
-            if (Validate.checkString(name) == false)
-                System.out.println("Error! Name không phù hợp!");
-        } while (name.equals("") || name.length() > 100);
+            if (name.length() > 100) {
+                System.out.println("Error! Name quá dài!");
+                continue;
+            }
+            if (name.equals("0"))
+                return name;
+            if (!Validate.checkName(name.toLowerCase()))
+                System.out.println("Error! Name không phù hợp! (Ít nhất 2 từ và cách nhau bởi dấu trắng)");
+        } while (name.equals("") || name.length() > 100 || !Validate.checkName(name.toLowerCase()));
         return name;
     }
 
@@ -92,19 +116,25 @@ public class InputData {
                 System.out.println("Error! Ngày Không được rỗng!");
                 continue;
             }
-            if (Validate.checkDate(date) == false) System.out.println("Ngày không phù hợp! Mời nhập lại!");
+            if (date.equals("0")) {
+                return new Date(0);
+            }
+            if (!Validate.checkDate(date)) {
+                System.out.println("Ngày không phù hợp! Mời nhập lại!");
+                continue;
+            }
 
             Date result = null;
             try {
                 result = new SimpleDateFormat("dd-MM-yyyy").parse(date);
             } catch (ParseException e) {
-                throw new RuntimeException(e);
+                System.out.println("Lỗi định dạng!!");
             }
             testDate = new SimpleDateFormat("dd-MM-yyyy").format(result);
             if (!testDate.equals(date))
                 System.out.println("Ngày không phù hợp! Mời nhập lại!");
             else return result;
-        } while (date.equals("") || Validate.checkDate(date) == false || !testDate.equals(date));
+        } while (date.equals("") || !Validate.checkDate(date) || !testDate.equals(date));
         return new Date();
     }
 
@@ -115,9 +145,11 @@ public class InputData {
             address = scanner.nextLine();
             if (address.equals(""))
                 return address;
-            if (Validate.checkString(address) == false)
+            if (address.equals("0"))
+                return address;
+            if (!Validate.checkString(address.toLowerCase()))
                 System.out.println("Địa chỉ không nên có ký tự đặt biệt! Mời nhập lại!");
-        } while (Validate.checkString(address) == false);
+        } while (!Validate.checkString(address.toLowerCase()));
         return address;
     }
 
@@ -127,8 +159,14 @@ public class InputData {
             System.out.print("Nhập Email: ");
             email = scanner.nextLine();
             if (email.equals("")) return email;
-            if (Validate.checkEmail(email) == false) System.out.println("Email không phù hợp! Mời nhập lại!");
-        } while (email.equals("") || Validate.checkEmail(email) == false);
+            if (email.equals("0")) return email;
+            if (!Validate.checkEmail(email)) {
+                System.out.println("Email không phù hợp! Mời nhập lại! (vd:email@g.com)");
+                continue;
+            }
+            if (userService.containEmail(email))
+                System.out.println("Email đã có người dùng! Mời nhập lại!");
+        } while (email.equals("") || !Validate.checkEmail(email) || userService.containEmail(email));
         return email;
     }
 
@@ -141,9 +179,11 @@ public class InputData {
                 System.out.println("Số điện thoại không được rỗng! Mời nhập lại!");
                 continue;
             }
-            if (Validate.checkPhoneNum(phoneNum) == false)
+            if (phoneNum.equals("0"))
+                return phoneNum;
+            if (!Validate.checkPhoneNum(phoneNum))
                 System.out.println("Số điện thoại không phù hợp! Mời nhập lại!");
-        } while (phoneNum.equals("") || Validate.checkPhoneNum(phoneNum) == false);
+        } while (phoneNum.equals("") || !Validate.checkPhoneNum(phoneNum));
         return phoneNum;
     }
 
@@ -173,8 +213,13 @@ public class InputData {
         do {
             System.out.print("Nhập Brand: ");
             brand = scanner.nextLine();
-            if (brand.equals("")) System.out.println("Error! Brand không được rỗng!");
-        } while (brand.equals(""));
+            if (brand.equals("")) {
+                System.out.println("Error! Brand không được rỗng!");
+                continue;
+            }
+            if (!Validate.checkString(brand.toLowerCase()))
+                System.out.println("Tên hãng không phù hợp! Mời nhập lại! (Không có ký tự đặt biệt)");
+        } while (brand.equals("") || !Validate.checkString(brand.toLowerCase()));
         return brand;
     }
 

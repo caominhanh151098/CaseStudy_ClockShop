@@ -2,6 +2,7 @@ package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Account {
     private long id = System.currentTimeMillis();
@@ -136,5 +137,18 @@ public class Account {
         System.out.printf("║\t%-15s%-30s║\t%-15s%-30s║%n", "Date of birth:", this.getDob(), "Address:", this.getAddressInfo());
         System.out.printf("║\t%-15s%-30s║\t%-15s%-30s║%n", "Email:", this.getEmailInfo(), "Phone Number:", this.getNumPhone());
         System.out.println("╚════════════════════════════════════════════════╩═══════════════════════════════════════════════╝");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return id == account.id && Objects.equals(username, account.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username);
     }
 }

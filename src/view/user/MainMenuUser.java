@@ -1,6 +1,7 @@
 package view.user;
 
 import model.Account;
+import services.ClearScreen;
 
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class MainMenuUser {
 
     public static void mainMenuAdmin(Account account) {
         int choice;
-        ClearScreen.clearScreen();
+
         do {
             System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
             System.out.printf("⚃\t\t%-40s⚃%n", "--Menu quản lý QUÁN BÁN ĐỒNG HỒ--");
@@ -33,6 +34,7 @@ public class MainMenuUser {
                     ProductView.products(account.getRote());
                     break;
                 case 3:
+                    ClearScreen.clearScreen();
                     OrderView.orders();
                     break;
                 case 0:
