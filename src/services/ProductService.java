@@ -52,13 +52,13 @@ public class ProductService {
 
     public void editProduct(int index, Product editProduct) {
         getProductList();
-        productList.set(index - 1, editProduct);
+        productList.set(index, editProduct);
         WriteFile.editData(productList, path);
     }
 
     public void deleteProduct(int index) {
         getProductList();
-        productList.remove(index - 1);
+        productList.remove(index);
         WriteFile.editData(productList, path);
     }
 

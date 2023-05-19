@@ -28,6 +28,8 @@ public class InputData {
                 System.out.println("Error! Username không được rỗng!");
                 continue;
             }
+            if (username.equals("0"))
+                return username;
             if (!Validate.checkAccount(username))
                 System.out.println("Error! Username không phù hợp! (Ít nhất có 6 ký tự gồm chữ thường và số)");
         } while (username.equals("") || !Validate.checkAccount(username));
@@ -51,7 +53,7 @@ public class InputData {
             }
             if (userService.contain(username))
                 System.out.println("Username đã tồn tại! Xin nhập lại!");
-        } while (username.equals("") || !Validate.checkAccount(username));
+        } while (username.equals("") || !Validate.checkAccount(username) || userService.contain(username));
         return username;
     }
 
@@ -109,11 +111,13 @@ public class InputData {
     public static Date getDate() {
         String date;
         String testDate = null;
+        boolean tryAgain = false;
         do {
             System.out.print("Nhập ngày sinh(*) (dd-MM-YYYY): ");
             date = scanner.nextLine();
             if (date.equals("")) {
                 System.out.println("Error! Ngày Không được rỗng!");
+                tryAgain = true;
                 continue;
             }
             if (date.equals("0")) {
@@ -121,20 +125,26 @@ public class InputData {
             }
             if (!Validate.checkDate(date)) {
                 System.out.println("Ngày không phù hợp! Mời nhập lại!");
+                tryAgain = true;
                 continue;
             }
-
             Date result = null;
             try {
                 result = new SimpleDateFormat("dd-MM-yyyy").parse(date);
+                if (result.compareTo(new Date()) >= 0) {
+                    System.out.println("Ngày không phù hợp! Mời nhập lại!");
+                    tryAgain = true;
+                    continue;
+                }
             } catch (ParseException e) {
                 System.out.println("Lỗi định dạng!!");
             }
             testDate = new SimpleDateFormat("dd-MM-yyyy").format(result);
-            if (!testDate.equals(date))
+            if (!testDate.equals(date)) {
                 System.out.println("Ngày không phù hợp! Mời nhập lại!");
-            else return result;
-        } while (date.equals("") || !Validate.checkDate(date) || !testDate.equals(date));
+                tryAgain = true;
+            } else return result;
+        } while (tryAgain);
         return new Date();
     }
 
@@ -206,6 +216,27 @@ public class InputData {
             }
         } while (index < 1 || index > accountList.size());
         return index - 1;
+    }
+
+    public static String getNameProduct() {
+        String name;
+        do {
+            System.out.print("Nhập Name(*): ");
+            name = scanner.nextLine();
+            if (name.equals("")) {
+                System.out.println("Error! Name không được rỗng!");
+                continue;
+            }
+            if (name.length() > 100) {
+                System.out.println("Error! Name quá dài!");
+                continue;
+            }
+            if (name.equals("0"))
+                return name;
+            if (!Validate.checkString(name.toLowerCase()))
+                System.out.println("Error! Name không phù hợp! (Có ký tự đặc biệt!)");
+        } while (name.equals("") || name.length() > 100 || !Validate.checkString(name.toLowerCase()));
+        return name;
     }
 
     public static String getBrand() {

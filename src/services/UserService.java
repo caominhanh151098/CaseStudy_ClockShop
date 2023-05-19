@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class UserService{
+public class UserService {
     static String path = "data\\user.csv";
     public static ArrayList<Account> accountList = new ArrayList<>();
 
@@ -90,22 +90,26 @@ public class UserService{
         }
         return null;
     }
+
     public boolean contain(String username) {
         getUserList();
         for (Account account : accountList) {
-            if (account.getUsername() == username) {
+            if (account.getUsername().equals(username)) {
                 return true;
             }
         }
         return false;
     }
+
     public boolean containEmail(String email) {
         getUserList();
         for (Account account : accountList) {
-            if (account.getEmail() == email) {
+            if (account.getEmail().equals(email))
                 return true;
-            }
         }
         return false;
     }
 }
+
+
+

@@ -42,9 +42,9 @@ public class EditData {
                 continue;
             }
             if (newName.equals("0")) return newName;
-            if (!Validate.checkName(name.toLowerCase()))
+            if (!Validate.checkName(newName.toLowerCase()))
                 System.out.println("Error! Name không phù hợp! (Ít nhất 2 từ và cách nhau bởi dấu trắng)");
-        } while (newName.length() > 100 || !Validate.checkName(name.toLowerCase()));
+        } while (newName.length() > 100 || !Validate.checkName(newName.toLowerCase()));
         return newName;
     }
 

@@ -20,7 +20,6 @@ public class CartView {
         int choice;
 
         do {
-            ClearScreen.clearScreen();
             myCart = cartService.getCartListByID(idUser);
             myCartDetail = myCart.getDetailList();
             if (myCart.getDetailList().isEmpty()) {
@@ -89,6 +88,7 @@ public class CartView {
     public static void confirmCard(long idUser) {
         System.out.print("Bạn xác nhận sẽ mua Hàng này? (y/n): ");
         if (InputData.choice()) {
+            ClearScreen.clearScreen();
             cartService.confirmBuy(idUser);
         }
     }

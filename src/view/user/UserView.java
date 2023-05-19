@@ -25,7 +25,6 @@ public class UserView {
     public static void adminView(Account account) {
         int choice;
         do {
-            ClearScreen.clearScreen();
             showUser();
             System.out.printf("%n⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.printf("⚃\t\t%-40s⚃%n", "--Menu quản lý Tài khoản--");
@@ -58,6 +57,7 @@ public class UserView {
                     ClearScreen.clearScreen();
                     break;
                 default:
+                    ClearScreen.clearScreen();
                     System.out.println("Lỗi! Không nằm trong mục lục. Yêu cầu chọn lại:");
             }
         } while (choice != 0);
@@ -102,6 +102,7 @@ public class UserView {
         String email;
         String phoneNum;
 
+        System.out.println("(Nhập \"0\" để hủy bỏ tác vụ)");
         do {
             password = EditData.getPassword(account.getPassword());
             if (Continue.continueInput(password))
@@ -148,6 +149,7 @@ public class UserView {
                 account.getUsername(), password, name, account.getRote(), dob, address, email, phoneNum);
         if (InputData.choice()) {
             userService.editUser(accountInfo);
+            System.out.println("Sửa thông tin thành công!");
         }
     }
 
@@ -172,6 +174,7 @@ public class UserView {
         String address;
         String email;
         String phoneNum;
+        System.out.println("(Nhập \"0\" để hủy bỏ tác vụ)");
         do {
             username = InputData.getUsername();
             if (Continue.continueInput(username))
@@ -217,7 +220,9 @@ public class UserView {
         System.out.printf("Bạn muốn tạo mới tài khoản này? %s (y/n): ",
                 accountInfo.info());
         if (InputData.choice()) {
+            ClearScreen.clearScreen();
             userService.addUser(accountInfo);
+            System.out.println("Tạo mới tài khoản thành công!");
         }
     }
 
@@ -226,6 +231,8 @@ public class UserView {
         System.out.print("Nhập STT Tài khoản cần sửa: ");
         int index = InputData.getIndex(accountList);
         Account account = accountList.get(index);
+        ClearScreen.clearScreen(5);
+        System.out.println("(Nhập \"0\" để hủy bỏ tác vụ)");
         String password;
         String name;
         Date dob;
@@ -278,10 +285,12 @@ public class UserView {
                 .setEmail(email)
                 .setNumPhone(phoneNum);
         System.out.printf("Bạn muốn thay đổi thông tin Username: %s?%nPassword: %s|Name: %s|Role: %s | Date or birth: %s, " +
-                        "Address: %s, Email: %s, Phone Number: %s(y/n)",
+                        "Address: %s, Email: %s, Phone Number: %s (y/n):",
                 username, password, name, role, dob, address, email, phoneNum);
         if (InputData.choice()) {
+            ClearScreen.clearScreen();
             userService.editUser(index, accountInfo);
+            System.out.println("Sửa thông tin tài khoản thành công!");
         }
     }
 
@@ -291,13 +300,16 @@ public class UserView {
         int index = InputData.getIndex(accountList);
 
         Account deleteUser = accountList.get(index);
-        if (account.equals(deleteUser))
+        if (account.equals(deleteUser)) {
+            ClearScreen.clearScreen();
             System.out.println("Bạn không thể xóa tài khoản này!");
-        else {
+        } else {
             String username = deleteUser.getUsername();
             System.out.printf("Bạn muốn xóa Username: %s? (y/n)%n", username);
             if (InputData.choice()) {
                 userService.deleteUser(index);
+                ClearScreen.clearScreen();
+                System.out.println("Xóa tài khoản thành công!");
             }
         }
     }

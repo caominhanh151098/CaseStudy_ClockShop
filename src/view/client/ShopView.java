@@ -15,7 +15,7 @@ public class ShopView {
     static ProductService productService = new ProductService();
     static CartDetailService cartDetailService = new CartDetailService();
     static CartService cartService = new CartService();
-    static ArrayList<Product> productList = new ArrayList<>();
+    static ArrayList<Product> shopProductList = new ArrayList<>();
 
     public static void viewShop(long idUser) {
 
@@ -25,8 +25,8 @@ public class ShopView {
             showProduct();
             System.out.println("Chọn STT sản phẩm bạn muốn mua: ");
             System.out.print("Enter number: ");
-            int productIndex = InputData.getIndex(productList);
-            Product choiceProduct = productList.get(productIndex);
+            int productIndex = InputData.getIndex(shopProductList);
+            Product choiceProduct = shopProductList.get(productIndex);
             int quantityBuy = InputData.getQuantityBuy(choiceProduct);
             System.out.printf("Bạn muốn mua sản phẩm này [Sản phẩm: %s | số lượng: %s]  (y/n): ", choiceProduct.getProductName(), quantityBuy);
             if (InputData.choice()) {
@@ -44,14 +44,16 @@ public class ShopView {
     }
 
         public static void showProduct() {
-        productList = productService.getProductList();
+        shopProductList.clear();
+        ArrayList<Product> productList = productService.getProductList();
             System.out.println("╔═══════╦══════════════════════════════════════════════════════════════╦══════════════════════╦════════════╦══════════════════════╗");
             System.out.printf("║%-7s║ %-60s ║ %-20s ║ %-10s ║ %-20s ║%n", "  STT", "                      Product name", "       Brand", " Quantity", "    Price");
             System.out.println("╠═══════╬══════════════════════════════════════════════════════════════╬══════════════════════╬════════════╬══════════════════════╣");
         int i = 1;
         for (Product product : productList)
-            if (product.getQuantity() > 0)
-                System.out.printf("║\t%-4s║%s║%n", i++, product.display());
+            if (product.getQuantity() > 0) {
+                shopProductList.add(product);
+                System.out.printf("║\t%-4s║%s║%n", i++, product.display()); }
             System.out.println("╚═══════╩══════════════════════════════════════════════════════════════╩══════════════════════╩════════════╩══════════════════════╝");
     }
 }

@@ -19,9 +19,10 @@ public class LoginService {
                     ClearScreen.clearScreen();
                     System.out.printf("Welcome back [%s]!%n%n", account.getName());
                     MainMenuUser.mainMenuAdmin(account);
-                } else
+                } else {
                     ClearScreen.clearScreen();
                     MainMenuClient.mainMenuClient(account);
+                }
                 return true;
             }
         }

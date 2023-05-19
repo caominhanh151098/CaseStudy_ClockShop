@@ -1,5 +1,6 @@
 package view.user;
 
+import input.Continue;
 import input.EditData;
 import input.InputData;
 import model.Product;
@@ -74,8 +75,19 @@ public class ProductView {
     }
 
     public static void addProduct() {
-        String productName = InputData.getName();
-        String brand = InputData.getBrand();
+        String productName;
+        String brand;
+        System.out.println("(Nhập \"0\" để hủy bỏ tác vụ)");
+        do {
+            productName = InputData.getNameProduct();
+            if (Continue.continueInput(productName))
+                return;
+        } while (productName.equals("0"));
+        do {
+            brand = InputData.getBrand();
+            if (Continue.continueInput(brand))
+                return;
+        } while (brand.equals("0"));
         int quantity = InputData.getQuantity();
         int price = InputData.getPrice();
 
@@ -93,7 +105,7 @@ public class ProductView {
     }
 
     public static void editProduct() {
-        productsList = productService.productList;
+        productsList = productService.getProductList();
         System.out.print("Nhập STT Sản phẩm cần sửa: ");
         int index = InputData.getIndex(productsList);
         Product product = productsList.get(index);
@@ -117,7 +129,7 @@ public class ProductView {
 
     public static void deleteProduct() {
         System.out.print("Nhập STT Tài khoản muốn xóa: ");
-        productsList = productService.productList;
+        productsList = productService.getProductList();
         int index = InputData.getIndex(productsList);
 
         String productName = productsList.get(index).getProductName();

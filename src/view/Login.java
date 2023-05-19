@@ -53,9 +53,18 @@ public class Login {
     public static void login() {
         String username;
         String password;
+        System.out.println("(Nhập \"0\" để thoát tác vụ)");
         do {
-            username = InputData.loginUsername();
-            password = InputData.getPassword();
+            do {
+                username = InputData.loginUsername();
+                if (Continue.continueInput(username))
+                    return;
+            } while (username.equals("0"));
+            do {
+                password = InputData.getPassword();
+                if (Continue.continueInput(password))
+                    return;
+            } while (password.equals("0"));
             if (!LoginService.login(username, password)) {
                 ClearScreen.clearScreen(5);
                 System.out.println("Wrong Username or Password!");
@@ -71,7 +80,7 @@ public class Login {
         String address;
         String email;
         String phoneNum;
-        System.out.println("Nhập 0 nếu muốn thoát tác vụ!");
+        System.out.println("(Nhập \"0\" để thoát tác vụ!)");
         do {
             username = InputData.getUsername();
             if (Continue.continueInput(username))

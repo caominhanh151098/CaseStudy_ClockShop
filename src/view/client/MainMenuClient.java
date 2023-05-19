@@ -29,12 +29,14 @@ public class MainMenuClient {
             }
             switch (choice) {
                 case 1:
+                    ClearScreen.clearScreen();
                     AcountView.menuAccount(account);
                     break;
                 case 2:
                     ShopView.viewShop(account.getId());
                     break;
                 case 3:
+                    ClearScreen.clearScreen();
                     CartView.cartView(account.getId());
                     break;
                 case 4:
@@ -43,6 +45,7 @@ public class MainMenuClient {
                 case 0:
                     break;
                 default:
+                    ClearScreen.clearScreen();
                     System.out.println("Error! Không nằm trong mục lục. Yêu cầu chọn lại:");
             }
         } while (choice != 0);

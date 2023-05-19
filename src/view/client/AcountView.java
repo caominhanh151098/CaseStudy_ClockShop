@@ -16,7 +16,6 @@ public class AcountView {
 
     public static void menuAccount(Account myUser) {
         int choice;
-        ClearScreen.clearScreen();
         do {
             myUser.showProfile();
             ClearScreen.clearScreen(3);
@@ -33,11 +32,13 @@ public class AcountView {
             }
             switch (choice) {
                 case 1:
+                    ClearScreen.clearScreen();
                     editUser();
                     break;
                 case 0:
                     break;
                 default:
+                    ClearScreen.clearScreen();
                     System.out.println("Error! Không nằm trong mục lục. Yêu cầu chọn lại:");
             }
         } while (choice != 0);

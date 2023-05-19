@@ -28,6 +28,7 @@ public class MainMenuUser {
             }
             switch (choice) {
                 case 1:
+                    ClearScreen.clearScreen();
                     UserView.user(account);
                     break;
                 case 2:
@@ -41,6 +42,7 @@ public class MainMenuUser {
                     ClearScreen.clearScreen();
                     break;
                 default:
+                    ClearScreen.clearScreen();
                     System.out.println("Error! Không nằm trong mục lục. Yêu cầu chọn lại:");
             }
         } while (choice != 0);
