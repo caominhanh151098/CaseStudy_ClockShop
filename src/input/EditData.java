@@ -48,6 +48,26 @@ public class EditData {
         return newName;
     }
 
+    public static String getNameProduct(String nameProduct) {
+        String newName;
+        do {
+            System.out.print("Nhập Name(*): ");
+            newName = scanner.nextLine();
+            if (newName.equals("")) {
+                return nameProduct;
+            }
+            if (newName.length() > 100) {
+                System.out.println("Error! Name quá dài!");
+                continue;
+            }
+            if (newName.equals("0"))
+                return newName;
+            if (!Validate.checkString(newName.toLowerCase()))
+                System.out.println("Error! Name không phù hợp! (Có ký tự đặc biệt!)");
+        } while (newName.length() > 100 || !Validate.checkString(newName.toLowerCase()));
+        return newName;
+    }
+
     public static int getRole(int role) {
         do {
             System.out.print("Chọn Role (0: Manager, 1: Staff) : ");
@@ -115,9 +135,9 @@ public class EditData {
                 System.out.println("Email không phù hợp! Mời nhập lại! (vd:email@g.com)");
                 continue;
             }
-            if (userService.containEmail(email))
+            if (userService.containEmail(newEmail))
                 System.out.println("Email đã có người dùng! Mời nhập lại!");
-        } while (!Validate.checkEmail(newEmail) || userService.containEmail(email));
+        } while (!Validate.checkEmail(newEmail) || userService.containEmail(newEmail));
         return newEmail;
     }
 

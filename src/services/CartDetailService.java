@@ -12,10 +12,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CartDetailService {
-    public static ProductService productService = new ProductService();
-    public static ArrayList<CartDetail> cartDetailList = new ArrayList<>();
+    private static ProductService productService = new ProductService();
+    private static ArrayList<CartDetail> cartDetailList = new ArrayList<>();
+    private static String path = "data\\cartdetail.csv";
     public static long totalPrice;
-    public static String path = "data\\cartdetail.csv";
 
     public ArrayList<CartDetail> getCartDetailList() {
         ArrayList<Product> productList = productService.getProductList();
@@ -57,7 +57,7 @@ public class CartDetailService {
         for (CartDetail cartDetail : cartDetailList)
             if (cartDetail.getIdCartDetail() == idCart) {
                 userCartDetailList.add(cartDetail);
-                totalPrice += cartDetail.getBuy_quantity() * cartDetail.getProductPrice();
+                totalPrice += (long) cartDetail.getBuy_quantity() * cartDetail.getProductPrice();
             }
         return userCartDetailList;
     }

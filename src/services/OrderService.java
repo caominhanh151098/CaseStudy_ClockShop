@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class OrderService {
-    public static OrderDetailService orderDetailService = new OrderDetailService();
-    public static CartService cartService = new CartService();
-    public static String path = "data\\order.csv";
-    public static ArrayList<Order> orderList = new ArrayList<>();
+    private static OrderDetailService orderDetailService = new OrderDetailService();
+    private static CartService cartService = new CartService();
+    private static ArrayList<Order> orderList = new ArrayList<>();
+    private static String path = "data\\order.csv";
 
     public ArrayList<Order> getOrderList() {
         orderList.clear();

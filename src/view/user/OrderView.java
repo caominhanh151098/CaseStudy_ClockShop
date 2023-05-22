@@ -17,13 +17,13 @@ public class OrderView {
         int choice;
         do {
             showOrder();
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
-            System.out.printf("⚃\t\t%-40s⚃%n", "--Menu quản lý Đơn đặt hàng--");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 1: Xem chi tiết đơn hàng");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 2: Xử lý đơn hàng");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 0: Quay lại");
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+            System.out.printf("                          ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+            System.out.printf("                          ⚃%-8s%-40s⚃%n", "", "--Menu quản lý Đơn đặt hàng--");
+            System.out.printf("                          ⚃%-8s%-40s⚃%n", "", "Chọn trong các mục");
+            System.out.printf("                          ⚃%-8s%-40s⚃%n", "", "Nhấn 1: Xem chi tiết đơn hàng");
+            System.out.printf("                          ⚃%-8s%-40s⚃%n", "", "Nhấn 2: Xử lý đơn hàng");
+            System.out.printf("                          ⚃%-8s%-40s⚃%n", "", "Nhấn 0: Quay lại");
+            System.out.printf("                          ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.print("Enter number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -51,15 +51,15 @@ public class OrderView {
 
     public static void showOrder() {
         orderList = orderService.getOrderList();
-        System.out.println("╔═══════╦═════════════════╦═════════════════╦═══════════════════════════╦═════════════════╦═════════════════╗");
+        System.out.printf("╔═══════╦═════════════════╦═════════════════╦═══════════════════════════╦═════════════════╦═════════════════╗%n");
         System.out.printf("║ %-5s ║ %-15s ║ %-15s ║ %-25s ║ %-15s ║ %-15s ║%n", "  STT", "    ID Order", "    ID User", "       Time Order", "ID OrderDetail", "    Status");
-        System.out.println("╠═══════╬═════════════════╬═════════════════╬═══════════════════════════╬═════════════════╬═════════════════╣");
+        System.out.printf("╠═══════╬═════════════════╬═════════════════╬═══════════════════════════╬═════════════════╬═════════════════╣%n");
         int i = 1;
         for (Order order : orderList) {
             System.out.printf("║\t%-4s║%s║%n", i, order.display());
             i++;
         }
-        System.out.println("╚═══════╩═════════════════╩═════════════════╩═══════════════════════════╩═════════════════╩═════════════════╝");
+        System.out.printf("╚═══════╩═════════════════╩═════════════════╩═══════════════════════════╩═════════════════╩═════════════════╝%n");
     }
 
     public static void viewDetail() {

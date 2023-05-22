@@ -11,10 +11,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class OrderDetailService {
-    public static ProductService productService = new ProductService();
-    public static ArrayList<OrderDetail> orderDetailList = new ArrayList<>();
+    private static ProductService productService = new ProductService();
+    private static ArrayList<OrderDetail> orderDetailList = new ArrayList<>();
+    private static String path = "data\\orderdetail.csv";
     public static int totalPrice;
-    public static String path = "data\\orderdetail.csv";
 
     public ArrayList<OrderDetail> getOrderDetailList() {
         orderDetailList.clear();

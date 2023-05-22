@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProductService {
-    public static ArrayList<Product> productList = new ArrayList<>();
-    static String path = "data\\product.csv";
+    private static ArrayList<Product> productList = new ArrayList<>();
+    private static String path = "data\\product.csv";
 
     public ArrayList<Product> getProductList() {
         productList.clear();

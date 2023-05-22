@@ -11,16 +11,15 @@ public class MainMenuClient {
     public static void mainMenuClient(Account account) {
         int choice;
         do {
-            ClearScreen.clearScreen();
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
-            System.out.printf("⚃\t\t%-40s⚃%n", "--Trang chủ web BÁN ĐỒNG HỒ--");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 1: Mở mục quản lý Tài khoản");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 2: Mở mục mua Sản phầm");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 3: Mở mục Giỏ hàng");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 4: Mở mục Đơn hàng");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 0: Đăng xuất");
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "--Trang chủ web BÁN ĐỒNG HỒ--");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Chọn trong các mục");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 1: Mở mục quản lý Tài khoản");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 2: Mở mục mua Sản phầm");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 3: Mở mục Giỏ hàng");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 4: Mở mục Đơn hàng");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 0: Đăng xuất");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.print("Enter number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -43,6 +42,7 @@ public class MainMenuClient {
                     OrderClientView.orderView(account);
                     break;
                 case 0:
+                    ClearScreen.clearScreen();
                     break;
                 default:
                     ClearScreen.clearScreen();

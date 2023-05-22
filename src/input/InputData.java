@@ -2,6 +2,7 @@ package input;
 
 import model.Account;
 import model.Product;
+import services.ClearScreen;
 import services.UserService;
 
 import java.text.ParseException;
@@ -331,13 +332,13 @@ public class InputData {
             }
             answer = Character.toLowerCase(answer);
             if (answer == CHOICE_YES || answer == CHOICE_NO) {
+                ClearScreen.clearScreen(5);
                 if (answer == CHOICE_YES) {
                     return true;
                 } else {
                     return false;
                 }
             } else System.out.println("Không phù hợp! Mời nhập lại!");
-
         } while (answer != CHOICE_YES && answer != CHOICE_NO);
         return false;
     }

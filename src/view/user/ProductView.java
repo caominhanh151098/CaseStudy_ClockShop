@@ -21,14 +21,14 @@ public class ProductView {
             do {
                 ClearScreen.clearScreen();
                 showProduct();
-                System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
-                System.out.printf("⚃\t\t%-40s⚃%n", "--Menu quản lý Sản phẩm--");
-                System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
-                System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 1: Thêm Sản phẩm");
-                System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 2: Sửa  Sản phẩm");
-                System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 3: Xóa  Sản phẩm");
-                System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 0: Quay lại");
-                System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+                System.out.printf("                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+                System.out.printf("                                        ⚃%-8s%-40s⚃%n", "", "--Menu quản lý Sản phẩm--");
+                System.out.printf("                                        ⚃%-8s%-40s⚃%n", "", "Chọn trong các mục");
+                System.out.printf("                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 1: Thêm Sản phẩm");
+                System.out.printf("                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 2: Sửa  Sản phẩm");
+                System.out.printf("                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 3: Xóa  Sản phẩm");
+                System.out.printf("                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 0: Quay lại");
+                System.out.printf("                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
                 System.out.print("Enter number: ");
                 try {
                     choice = Integer.parseInt(scanner.nextLine());
@@ -63,15 +63,15 @@ public class ProductView {
 
     public static void showProduct() {
         productsList = productService.getProductList();
-        System.out.println("╔═══════╦══════════════════════════════════════════════════════════════╦══════════════════════╦════════════╦══════════════════════╗");
+        System.out.printf("╔═══════╦══════════════════════════════════════════════════════════════╦══════════════════════╦════════════╦══════════════════════╗%n");
         System.out.printf("║%-7s║ %-60s ║ %-20s ║ %-10s ║ %-20s ║%n", "  STT", "                      Product name", "       Brand", " Quantity", "    Price");
-        System.out.println("╠═══════╬══════════════════════════════════════════════════════════════╬══════════════════════╬════════════╬══════════════════════╣");
+        System.out.printf("╠═══════╬══════════════════════════════════════════════════════════════╬══════════════════════╬════════════╬══════════════════════╣%n");
         int i = 1;
         for (Product product : productsList) {
             System.out.printf("║\t%-4s║%s║%n", i, product.display());
             i++;
         }
-        System.out.println("╚═══════╩══════════════════════════════════════════════════════════════╩══════════════════════╩════════════╩══════════════════════╝");
+        System.out.printf("╚═══════╩══════════════════════════════════════════════════════════════╩══════════════════════╩════════════╩══════════════════════╝%n");
     }
 
     public static void addProduct() {
@@ -109,8 +109,19 @@ public class ProductView {
         System.out.print("Nhập STT Sản phẩm cần sửa: ");
         int index = InputData.getIndex(productsList);
         Product product = productsList.get(index);
-        String productName = EditData.getName(product.getProductName());
-        String brand = EditData.getBrand(product.getBrand());
+        String productName ;
+        String brand;
+        System.out.println("(Nhập \"0\" để hủy bỏ tác vụ)");
+        do {
+            productName = EditData.getNameProduct(product.getProductName());
+            if (Continue.continueInput(productName))
+                return;
+        } while (productName.equals("0"));
+        do {
+            brand = EditData.getBrand(product.getBrand());
+            if (Continue.continueInput(brand))
+                return;
+        } while (brand.equals("0"));
         int quantity = EditData.getQuantity(product.getQuantity());
         int price = EditData.getPrice(product.getPrice());
         Product productInfo = new Product()

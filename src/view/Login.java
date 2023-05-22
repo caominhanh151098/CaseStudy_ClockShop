@@ -16,15 +16,15 @@ public class Login {
 
     public static void main(String[] args) {
         int choice;
+        ClearScreen.clearScreen();
         do {
-            ClearScreen.clearScreen();
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
-            System.out.printf("⚃%10s%-30s⚃%n", "", "--WEB BÁN ĐỒNG HỒ--");
-            System.out.printf("⚃%10s%-30s⚃%n", "", "Chọn trong các mục");
-            System.out.printf("⚃%10s%-30s⚃%n", "", "Nhấn 1: Đăng nhập");
-            System.out.printf("⚃%10s%-30s⚃%n", "", "Nhấn 2: Đăng ký");
-            System.out.printf("⚃%10s%-30s⚃%n", "", "Nhấn 0: Thoát");
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+            System.out.printf("                                                            ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+            System.out.printf("                                                            ⚃%10s %-30s⚃%n", "", "--WEB BÁN ĐỒNG HỒ--");
+            System.out.printf("                                                            ⚃%10s %-30s⚃%n", "", "Chọn trong các mục");
+            System.out.printf("                                                            ⚃%10s %-30s⚃%n", "", "Nhấn 1: Đăng nhập");
+            System.out.printf("                                                            ⚃%10s %-30s⚃%n", "", "Nhấn 2: Đăng ký");
+            System.out.printf("                                                            ⚃%10s %-30s⚃%n", "", "Nhấn 0: Thoát");
+            System.out.printf("                                                            ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.print("Enter number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -45,6 +45,7 @@ public class Login {
                     System.out.println("Exit!");
                     System.exit(0);
                 default:
+                    ClearScreen.clearScreen();
                     System.out.println("Error! Không nằm trong mục lục. Yêu cầu chọn lại:");
             }
         } while (true);

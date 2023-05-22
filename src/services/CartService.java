@@ -11,11 +11,11 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CartService {
-    public static OrderService orderService = new OrderService();
-    public static CartDetailService cartDetailService = new CartDetailService();
-    public static ProductService productService = new ProductService();
-    public static ArrayList<Cart> cartList = new ArrayList<>();
-    public static String path = "data\\cart.csv";
+    private static OrderService orderService = new OrderService();
+    private static CartDetailService cartDetailService = new CartDetailService();
+    private static ProductService productService = new ProductService();
+    private static ArrayList<Cart> cartList = new ArrayList<>();
+    private static String path = "data\\cart.csv";
 
     public ArrayList<Cart> getCartList() {
         cartList.clear();

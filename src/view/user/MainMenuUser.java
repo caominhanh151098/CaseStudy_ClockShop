@@ -12,14 +12,14 @@ public class MainMenuUser {
         int choice;
 
         do {
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
-            System.out.printf("⚃\t\t%-40s⚃%n", "--Menu quản lý QUÁN BÁN ĐỒNG HỒ--");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 1: Mở mục Tài khoản");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 2: Mở mục Sản phầm");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 3: Mở mục Đặt hàng");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 0: Đăng xuất");
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "--Menu quản lý QUÁN BÁN ĐỒNG HỒ--");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Chọn trong các mục");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 1: Mở mục Tài khoản");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 2: Mở mục Sản phầm");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 3: Mở mục Đặt hàng");
+            System.out.printf("                                                        ⚃\t\t%-40s⚃%n", "Nhấn 0: Đăng xuất");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.print("Enter number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());

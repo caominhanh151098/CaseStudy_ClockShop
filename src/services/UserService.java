@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class UserService {
-    static String path = "data\\user.csv";
-    public static ArrayList<Account> accountList = new ArrayList<>();
+    private static ArrayList<Account> accountList = new ArrayList<>();
+    private String path = "data\\user.csv";
 
     public ArrayList<Account> getUserList() {
         accountList.clear();
@@ -66,13 +66,14 @@ public class UserService {
 
     public void editUser(Account editAccount) {
         getUserList();
-        int index = 1;
+        int index = 0;
         for (Account account : accountList) {
             if (account.getId() == editAccount.getId()) {
-                editUser(index, editAccount);
+                accountList.set(index,editAccount);
                 break;
             } else index++;
         }
+        WriteFile.editData(accountList, path);
     }
 
     public void deleteUser(int index) {

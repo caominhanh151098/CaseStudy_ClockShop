@@ -26,14 +26,14 @@ public class UserView {
         int choice;
         do {
             showUser();
-            System.out.printf("%n⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
-            System.out.printf("⚃\t\t%-40s⚃%n", "--Menu quản lý Tài khoản--");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 1: Thêm Tài khoản");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 2: Sửa Tài khoản");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 3: Xóa Tài khoản");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 0: Quay lại");
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "--Menu quản lý Tài khoản--");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Chọn trong các mục");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 1: Thêm Tài khoản");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 2: Sửa Tài khoản");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 3: Xóa Tài khoản");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 0: Quay lại");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.print("Enter number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -69,11 +69,11 @@ public class UserView {
         do {
             account.showProfile();
             ClearScreen.clearScreen(3);
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Chọn trong các mục");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 1: Chỉnh sửa thông tin cá nhân");
-            System.out.printf("⚃\t\t%-40s⚃%n", "Nhấn 0: Quay lại");
-            System.out.println("⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Chọn trong các mục");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 1: Chỉnh sửa thông tin cá nhân");
+            System.out.printf("                                                        ⚃%-8s%-40s⚃%n", "", "Nhấn 0: Quay lại");
+            System.out.printf("                                                        ⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃⚃%n");
             System.out.print("Enter number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -155,15 +155,15 @@ public class UserView {
 
     public static void showUser() {
         accountList = userService.getUserList();
-        System.out.println("╔═══════╦═════════════════════╦══════════════════════╦══════╦═════════════════╦════════════════════════════════╦═══════════════════════════╦══════════════╗");
+        System.out.printf("╔═══════╦═════════════════════╦══════════════════════╦══════╦═════════════════╦════════════════════════════════╦═══════════════════════════╦══════════════╗%n");
         System.out.printf("║%-6s ║ %-19s ║ %-20s ║ %4s ║ %-15s ║ %-30s ║ %-25s ║ %-12s ║%n", "  STT", "     Username", "        Name", "Role", "  Day or Birth", "           Address", "         Email", "Phone Number");
-        System.out.println("╠═══════╬═════════════════════╬══════════════════════╬══════╬═════════════════╬════════════════════════════════╬═══════════════════════════╬══════════════╣");
+        System.out.printf("╠═══════╬═════════════════════╬══════════════════════╬══════╬═════════════════╬════════════════════════════════╬═══════════════════════════╬══════════════╣%n");
         int i = 1;
         for (Account account : accountList) {
             System.out.printf("║\t%-4s║%s║%n", i, account.display());
             i++;
         }
-        System.out.println("╚═══════╩═════════════════════╩══════════════════════╩══════╩═════════════════╩════════════════════════════════╩═══════════════════════════╩══════════════╝");
+        System.out.printf("╚═══════╩═════════════════════╩══════════════════════╩══════╩═════════════════╩════════════════════════════════╩═══════════════════════════╩══════════════╝%n");
     }
 
     public static void addUser() {
@@ -273,7 +273,7 @@ public class UserView {
         } while (phoneNum.equals("0"));
 
         String username = account.getUsername();
-        Long id = account.getId();
+        long id = account.getId();
         Account accountInfo = new Account()
                 .setId(id)
                 .setUsername(username)
@@ -284,9 +284,10 @@ public class UserView {
                 .setAddress(address)
                 .setEmail(email)
                 .setNumPhone(phoneNum);
-        System.out.printf("Bạn muốn thay đổi thông tin Username: %s?%nPassword: %s|Name: %s|Role: %s | Date or birth: %s, " +
-                        "Address: %s, Email: %s, Phone Number: %s (y/n):",
-                username, password, name, role, dob, address, email, phoneNum);
+        System.out.printf("Bạn muốn thay đổi thông tin Username: %s?%n" +
+                        "Password: %s | Name: %s | Role: %s | Date or birth: %s,%n" +
+                        "Address: %s | Email: %s | Phone Number: %s (y/n):",
+                username, password, name, role, accountInfo.getDob(), address, email, phoneNum);
         if (InputData.choice()) {
             ClearScreen.clearScreen();
             userService.editUser(index, accountInfo);
