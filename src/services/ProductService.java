@@ -39,7 +39,7 @@ public class ProductService {
         } catch (FileNotFoundException e) {
             System.out.println("Error! Không thấy file data!");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error 404! Lỗi dữ liệu!");
         }
         return productList;
     }

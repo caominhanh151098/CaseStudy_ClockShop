@@ -47,7 +47,7 @@ public class UserService {
         } catch (FileNotFoundException e) {
             System.out.println("Error! Không thấy file data!");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Error 404! Lỗi dữ liệu!");
         }
         return accountList;
     }

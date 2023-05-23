@@ -13,7 +13,7 @@ public class Validate {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     private static final String DATE_REGEX = "^(0?[1-9]|[12]\\d|3[01])[\\-](0?[1-9]|1[0-2])[\\-](19|20)\\d{2}$";
     private static final String PHONENUMBER_REGEX = "^[0]\\d{9}$";
-    private static final String STRING_REGEX = "^([a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ/\\d\\s]+)$";
+    private static final String STRING_REGEX = "^([a-vxyỳọáầảấờẻễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ/\\d\\s]+)$";
 
     public static boolean checkEmail(String email) {
         pattern = Pattern.compile(EMAIL_REGEX);

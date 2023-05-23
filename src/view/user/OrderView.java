@@ -77,7 +77,7 @@ public class OrderView {
             System.out.println("Đơn hàng này đã ở trạng thái \"Hoàn thành\"!");
             return;
         }
-        System.out.println("Bạn muốn chuyển đơn hàng này thành trạng thái \"Đã hoàn thành\" ? (y/n): ");
+        System.out.print("Bạn muốn chuyển đơn hàng này thành trạng thái \"Đã hoàn thành\" ? (y/n): ");
         if (InputData.choice()) {
             orderService.finishOrder(order);
             System.out.println("Chuyển trạng thái thành công!");

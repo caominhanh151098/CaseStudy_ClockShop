@@ -47,7 +47,7 @@ public class OrderService {
         } catch (FileNotFoundException e) {
             System.out.println("Error! Không thấy file data!");
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            System.out.println("Error 404! Lỗi dữ liệu!");
         }
         return orderList;
     }
